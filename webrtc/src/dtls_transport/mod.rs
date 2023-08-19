@@ -539,7 +539,7 @@ impl RTCDtlsTransport {
     pub(crate) async fn validate_fingerprint(&self, remote_cert: &[u8]) -> Result<()> {
         let remote_parameters = self.remote_parameters.lock().await;
         for fp in &remote_parameters.fingerprints {
-            if fp.algorithm != "sha-256" {
+            if fp.algorithm.to_lowercase() != "sha-256" {
                 return Err(Error::ErrUnsupportedFingerprintAlgorithm);
             }
 
