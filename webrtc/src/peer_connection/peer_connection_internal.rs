@@ -861,7 +861,7 @@ impl PeerConnectionInternal {
                         }
                     }
                 }
-                ATTR_KEY_SSRC => return Err(Error::ErrPeerConnSingleMediaSectionHasExplicitSSRC),
+                ATTR_KEY_SSRC => return Ok(false),
                 SDP_ATTRIBUTE_RID => return Ok(false),
                 _ => {}
             };
